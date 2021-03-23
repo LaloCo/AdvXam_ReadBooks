@@ -1,4 +1,6 @@
 ﻿using System;
+using MyReadBooks.ViewModels;
+using MyReadBooks.Views;
 using Prism;
 using Prism.Ioc;
 using Prism.Unity;
@@ -21,7 +23,9 @@ namespace MyReadBooks
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.RegisterForNavigation<BooksPage, BooksVM>();
+            containerRegistry.RegisterForNavigation<NewBookPage, NewBookVM>();
+            containerRegistry.RegisterForNavigation<BookDetailsPage, BookDetailsVM>();
         }
     }
 }
