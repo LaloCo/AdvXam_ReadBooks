@@ -3,7 +3,20 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MyReadBooks.Views.NewBookPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
-        
+        <StackLayout>
+            <SearchBar Placeholder="Search ISBN, title or author..."/>
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
