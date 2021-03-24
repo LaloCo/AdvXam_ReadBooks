@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="MyReadBooks.Views.BooksPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New book"/>
+        <ToolbarItem Text="New book"
+                     Command="{Binding NewBookCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

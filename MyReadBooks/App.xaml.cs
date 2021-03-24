@@ -19,10 +19,13 @@ namespace MyReadBooks
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            NavigationService.NavigateAsync("NavigationPage/BooksPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<BooksPage, BooksVM>();
             containerRegistry.RegisterForNavigation<NewBookPage, NewBookVM>();
             containerRegistry.RegisterForNavigation<BookDetailsPage, BookDetailsVM>();
