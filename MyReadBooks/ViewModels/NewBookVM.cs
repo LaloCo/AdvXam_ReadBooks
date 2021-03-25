@@ -21,7 +21,7 @@ namespace MyReadBooks.ViewModels
         {
             using(HttpClient client = new HttpClient())
             {
-                var result = await client.GetStringAsync($"https://www.googleapis.com/books/v1/volumes?q={query}&key{Constants.GOOGLE_BOOKS_API_KEY}");
+                var result = await client.GetStringAsync($"https://www.googleapis.com/books/v1/volumes?q={query}&key={Constants.GOOGLE_BOOKS_API_KEY}");
 
                 var data = JsonConvert.DeserializeObject<BoooksAPI>(result);
             }
