@@ -23,7 +23,7 @@ namespace MyReadBooks.ViewModels
             {
                 var result = await client.GetStringAsync($"https://www.googleapis.com/books/v1/volumes?q={query}&key={Constants.GOOGLE_BOOKS_API_KEY}");
 
-                var data = JsonConvert.DeserializeObject<BoooksAPI>(result);
+                var data = JsonConvert.DeserializeObject<BooksAPI>(result);
             }
         }
     }

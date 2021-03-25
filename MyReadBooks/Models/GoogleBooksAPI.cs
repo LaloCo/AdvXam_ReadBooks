@@ -26,7 +26,7 @@ namespace MyReadBooks.Models
         public VolumeInfo volumeInfo { get; set; }
     }
 
-    public class BoooksAPI
+    public class BooksAPI
     {
         public List<Item> items { get; set; }
     }
