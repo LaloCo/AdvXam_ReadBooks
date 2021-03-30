@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SQLite;
 
 namespace MyReadBooks.Models
 {
@@ -23,7 +24,36 @@ namespace MyReadBooks.Models
 
     public class Item
     {
-        public VolumeInfo volumeInfo { get; set; }
+        private VolumeInfo _volumeInfo;
+        [Ignore]
+        public VolumeInfo volumeInfo
+        {
+            get
+            {
+                return _volumeInfo;
+            }
+            set
+            {
+                _volumeInfo = value;
+
+                title = _volumeInfo.title;
+                publisher = _volumeInfo.publisher;
+                publishedDate = _volumeInfo.publishedDate;
+                if(_volumeInfo.authors != null)
+                {
+                    foreach(var author in _volumeInfo.authors)
+                        authors += author + ", ";
+                }
+                if (_volumeInfo.imageLinks != null)
+                    thumbnail = _volumeInfo.imageLinks.thumbnail;
+            }
+        }
+
+        public string title { get; set; }
+        public string authors { get; set; }
+        public string thumbnail { get; set; }
+        public string publisher { get; set; }
+        public string publishedDate { get; set; }
     }
 
     public class BooksAPI

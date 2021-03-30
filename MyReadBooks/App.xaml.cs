@@ -11,16 +11,23 @@ namespace MyReadBooks
 {
     public partial class App : PrismApplication
     {
+        public static string DatabasePath;
+
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
             
         }
 
+        public App(string datatbasePath, IPlatformInitializer initializer = null) : base(initializer)
+        {
+            DatabasePath = datatbasePath;
+
+            NavigationService.NavigateAsync("NavigationPage/BooksPage");
+        }
+
         protected override void OnInitialized()
         {
             InitializeComponent();
-
-            NavigationService.NavigateAsync("NavigationPage/BooksPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
