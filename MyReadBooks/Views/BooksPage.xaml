@@ -9,10 +9,12 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView>
+        <ListView ItemsSource="{Binding SavedBooks}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell/>
+                    <ImageCell ImageSource="{Binding thumbnail}"
+                               Text="{Binding title}"
+                               Detail="{Binding authors}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
