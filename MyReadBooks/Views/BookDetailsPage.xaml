@@ -6,7 +6,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Delete"
                      IsDestructive="True"
-                     Command="{Binding DeleteBook}"/>
+                     Command="{Binding DeleteBookCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

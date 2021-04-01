@@ -43,13 +43,14 @@ namespace MyReadBooks.ViewModels
             }
         }
 
-        public ICommand DeleteBook { get; set; }
+        public ICommand DeleteBookCommand { get; set; }
 
         Item selectedBook;
-
-        public BookDetailsVM()
+        INavigationService _navigationService;
+        public BookDetailsVM(INavigationService navigationService)
         {
-            DeleteBook = new DelegateCommand(DeleteBookAction);
+            _navigationService = navigationService;
+            DeleteBookCommand = new DelegateCommand(DeleteBookAction);
         }
 
         private void DeleteBookAction()
@@ -61,6 +62,7 @@ namespace MyReadBooks.ViewModels
                 if (booksDeleted >= 1)
                 {
                     App.Current.MainPage.DisplayAlert("Success", "Book deleted", "Ok");
+                    _navigationService.GoBackAsync();
                 }
                 else
                 {
