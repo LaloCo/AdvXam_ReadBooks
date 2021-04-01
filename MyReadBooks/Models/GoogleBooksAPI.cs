@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using SQLite;
 
 namespace MyReadBooks.Models
@@ -24,6 +25,10 @@ namespace MyReadBooks.Models
 
     public class Item
     {
+        [JsonIgnore]
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
         private VolumeInfo _volumeInfo;
         [Ignore]
         public VolumeInfo volumeInfo
