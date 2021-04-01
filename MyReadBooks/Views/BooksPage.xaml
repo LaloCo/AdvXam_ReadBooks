@@ -2,6 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     x:Class="MyReadBooks.Views.BooksPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New book"
@@ -9,7 +10,13 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding SavedBooks}">
+        <ListView x:Name="booksListView"
+                  ItemsSource="{Binding SavedBooks}">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemSelected"
+                                          Command="{Binding BookDetailsCommand}"
+                                          CommandParameter="{x:Reference booksListView}"/>
+            </ListView.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell ImageSource="{Binding thumbnail}"

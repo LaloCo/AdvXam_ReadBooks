@@ -12,6 +12,7 @@ namespace MyReadBooks.ViewModels
     public class BooksVM : IPageLifecycleAware
     {
         public ICommand NewBookCommand { get; set; }
+        public ICommand BookDetailsCommand { get; set; }
         public ObservableCollection<Item> SavedBooks { get; set; }
 
         INavigationService _navigationService;
@@ -19,8 +20,19 @@ namespace MyReadBooks.ViewModels
         {
             _navigationService = navigationService;
             NewBookCommand = new DelegateCommand(NewBookAction);
+            BookDetailsCommand = new DelegateCommand<object>(GoToDetail, CanGoToDetails);
             SavedBooks = new ObservableCollection<Item>();
             ReadSavedBooks();
+        }
+
+        private bool CanGoToDetails(object arg)
+        {
+            return arg != null;
+        }
+
+        private void GoToDetail(object obj)
+        {
+            
         }
 
         private void ReadSavedBooks()
