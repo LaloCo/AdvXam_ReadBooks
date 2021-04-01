@@ -46,8 +46,12 @@ namespace MyReadBooks.Models
                 publishedDate = _volumeInfo.publishedDate;
                 if(_volumeInfo.authors != null)
                 {
-                    foreach(var author in _volumeInfo.authors)
-                        authors += author + ", ";
+                    for (int i = 0; i < _volumeInfo.authors.Count; i++)
+                    {
+                        authors += _volumeInfo.authors[i];
+                        if (i < _volumeInfo.authors.Count - 1)
+                            authors += ", ";
+                    }
                 }
                 if (_volumeInfo.imageLinks != null)
                     thumbnail = _volumeInfo.imageLinks.thumbnail;
